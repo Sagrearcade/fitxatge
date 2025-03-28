@@ -2,8 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <base target="_top">
-    <title>Fitxatge</title>
+    <title>Capturant IP...</title>
     <script>
       async function redirigirAmbIP() {
         try {
@@ -14,10 +13,9 @@
           const params = new URLSearchParams(window.location.search);
           params.append("ip", ip);
 
-          // Posa aquí la teva URL d’Apps Script!
           const novaURL = "https://script.google.com/macros/s/AKfycbzm3O_Usz6DtHZHJAJP_hOoOsC0tdhKHrzrqmkqyNut52-AyBdlb0vtL8t_8NHlaQf6Iw/exec?" + params.toString();
 
-          window.location.href = novaURL;
+          window.top.location = novaURL; // <-- canvi clau
         } catch (error) {
           document.body.innerHTML = "Error capturant la IP. Torna-ho a intentar.";
         }
