@@ -1,30 +1,15 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Capturant IP...</title>
-    <script>
-      async function redirigirAmbIP() {
-        try {
-          const resposta = await fetch("https://api.ipify.org?format=json");
-          const dades = await resposta.json();
-          const ip = dades.ip;
+<script>
+  async function redirigirAmbIP() {
+    const resposta = await fetch("https://api.ipify.org?format=json");
+    const dades = await resposta.json();
+    const ip = dades.ip;
 
-          const params = new URLSearchParams(window.location.search);
-          params.append("ip", ip);
+    const params = new URLSearchParams(window.location.search);
+    params.append("ip", ip);
 
-          const novaURL = "https://script.google.com/macros/s/AKfycbzm3O_Usz6DtHZHJAJP_hOoOsC0tdhKHrzrqmkqyNut52-AyBdlb0vtL8t_8NHlaQf6Iw/exec?" + params.toString();
+    const novaURL = "https://script.google.com/macros/s/AKfycbzm3O_Usz6DtHZHJAJP_hOoOsC0tdhKHrzrqmkqyNut52-AyBdlb0vtL8t_8NHlaQf6Iw/exec?" + params.toString();
 
-          window.top.location = novaURL; // <-- canvi clau
-        } catch (error) {
-          document.body.innerHTML = "Error capturant la IP. Torna-ho a intentar.";
-        }
-      }
-
-      window.onload = redirigirAmbIP;
-    </script>
-  </head>
-  <body>
-    <p>Capturant IP... ⏳</p>
-  </body>
-</html>
+    window.location.href = novaURL;
+  }
+  window.onload = redirigirAmbIP;
+</script>
